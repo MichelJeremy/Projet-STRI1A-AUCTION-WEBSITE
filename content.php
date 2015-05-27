@@ -125,25 +125,36 @@
                         $prixMax = 0;
                     }
                     
+                    // Aucune enchère n'a été placée sur l'objet
                     if ($prixInitial > $prixMax) {
-                        // no bid on the auction
+                        $msg = "One of your items have been removed because noone put a higher bid on it.";
+                        $from = "From: x3m.gestion@gmail.com";
+
+                        mail($email, "Item not sold !", $msg, $from);
                         
                     } else {
-                        // give $prixMax to seller
+                        // On récupère les crédits actuels du vendeur
+                        $dbquery3 = pg_query($dbconnexion, "SELECT crédits from Users WHERE login='$seller';");
+                        $result3 = pg_fetch_array($dbquery3);
+                        $credits = $result3[0] + $prixMax;
+                        
+                        // on met à jour les crédits du vendeur et on envoie un mail.
+                        $dbquery3 = pg_query($dbconnexion, "UPDATE Users SET crédits=$credits WHERE login='$seller';");
+                        
+                        $msg = "Congratulations, you sold an item ! Your new account balance is $credits";
+                        $from = "From: x3m.gestion@gmail.com";
+                        
+                        mail($email, "Item sold !", $msg, $from);
                     }
                     //acc : x3m.gestion@gmail.com
                     //      x3m.gestion1234
-                    
-                    // mail function
-                    $msg = "Congratulations, you sold an item ! Your new account balance is $credits";
-                    $from = "From: x3m.gestion@gmail.com";
-                    
-                    mail($email, "Item sold !", $msg, $from);
-                    echo "mail sent <br>";
+
+
                 }
             }
         
         }
+        
         ?>
         <span id="checkTimestamps"></span>
         

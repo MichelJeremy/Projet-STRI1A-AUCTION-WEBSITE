@@ -8,7 +8,7 @@ $dbconnexion = pg_connect("host=localhost port=5432 dbname=Projet_Web user=postg
 
 $dbquery = pg_query($dbconnexion, "SELECT COUNT(*) FROM Users WHERE login='$ID' AND password='$password';");
 $result = pg_fetch_array($dbquery);
-if ($result[0] == '0') {
+if ($result[0] == 0) {
     require 'overallHeader.html';
     $displayErrorMessage = 1;
     include 'menuBar.php';
