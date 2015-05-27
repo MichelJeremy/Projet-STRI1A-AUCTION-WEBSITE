@@ -108,6 +108,29 @@
                     $result3 = pg_fetch_assoc($dbquery3);
                     $email = $result3['email'];
                     $credits = $result3['crédits'];
+                    
+                    // We need to get the amount the seller is going to earn
+                    // Initial amount the auction was set to
+                    $dbquery3 = pg_query($dbconnexion, "SELECT prixInitial FROM Objets WHERE codeObjet=$codeObjet;");
+                    $result3 = pg_fetch_array($dbquery);
+                    $prixInitial = $result3[0];
+                    
+                    
+                    // Max amount of the bids
+                    $dbquery3 = pg_query($dbconnexion, "SELECT max(prixEncherit) FROM Encherir WHERE codeObjet=$codeObjet;");
+                    if ($dbquery3 != NULL) {
+                        $result3 = pg_fetch_array($dbquery3);
+                        $prixMax = $result3[0];
+                    } else {
+                        $prixMax = 0;
+                    }
+                    
+                    if ($prixInitial > $prixMax) {
+                        // no bid on the auction
+                        
+                    } else {
+                        // give $prixMax to seller
+                    }
                     //acc : x3m.gestion@gmail.com
                     //      x3m.gestion1234
                     
