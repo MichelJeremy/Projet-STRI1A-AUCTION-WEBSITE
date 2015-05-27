@@ -95,6 +95,28 @@
                 while ($row = pg_fetch_assoc($dbquery)) {
                     $codeObjet = $row['codeobjet'];
                     $dbquery2 = pg_query($dbconnexion, "UPDATE Objets SET statut = '0' WHERE codeObjet = '$codeObjet';");
+                    // add mail alert when auction is removed
+                    // prototype : doesn't seem to work currently
+                    
+                    // get the one who sold the item
+                    $dbquery3 = pg_query($dbconnexion, "SELECT login FROM Vendre WHERE codeobjet = '$codeObjet';");
+                    $result3 = pg_fetch_array($dbquery3);
+                    $seller = $result3[0];
+                    
+                    // get the database line of the seller
+                    $dbquery3 = pg_query($dbconnexion, "SELECT * FROM Users WHERE login='$seller';");
+                    $result3 = pg_fetch_assoc($dbquery3);
+                    $email = $result3['email'];
+                    $credits = $result3['crédits'];
+                    //acc : x3m.gestion@gmail.com
+                    //      x3m.gestion1234
+                    
+                    // mail function
+                    $msg = "Congratulations, you sold an item ! Your new account balance is $credits";
+                    $from = "From: x3m.gestion@gmail.com";
+                    
+                    mail($email, "Item sold !", $msg, $from);
+                    echo "mail sent <br>";
                 }
             }
         
