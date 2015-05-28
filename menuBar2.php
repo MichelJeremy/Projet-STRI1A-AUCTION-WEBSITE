@@ -12,7 +12,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li> <a href="#">Enchères en cours</a></li>
+                        <li> <a href="EnchereCours.php">Enchères en cours</a></li>
                         <li> <a href="VendreObjet.php">Vendre objet</a></li>
                         <li> <a href="acheterCredit.php">Acheter crédits</a></li>
                         <li> <a href="MonCompte.php">Mon compte</a></li>
