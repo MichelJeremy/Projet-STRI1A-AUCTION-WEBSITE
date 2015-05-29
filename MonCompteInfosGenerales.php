@@ -3,14 +3,21 @@
     include 'session.php';
     include 'overallHeader.html';
     include 'menuBar2.php';
+
+    // get user data
+    $dbconnexion = pg_connect("host=localhost port=5432 dbname=Projet_Web user=postgres password=postgres") or die('connection failed'.pg_last_error());
+    $login = $_SESSION['ID'];
+    $dbquery = pg_query($dbconnexion, "SELECT * FROM Users WHERE login='$login';");
+    $result = pg_fetch_assoc($dbquery);
+    $email = $result['email'];
 ?>
 
 		<!--Début du Jumbotron -->
         <div class="container">
             <div class="jumbotron">
                 <h1>Mes Informations Générales</h1> 
-                <p>BIENVENUE À LA RUBRIQUE MES INFORMATIONS PERSONNELLES. ICI VOUS POUVEZ MODIFIER VOS INFORMATIONS PERSONNELLES.</p>
-                <p></p>
+                <p>BIENVENUE À LA RUBRIQUE MES INFORMATIONS DE CONNEXION. ICI VOUS POUVEZ MODIFIER VOS INFORMATIONS CONCERNANT L'AUTHENTIFICATION.
+                </p>
             </div>     
         <!-- Fin du Jumbotron -->
 		<!--Début sous-menu -->
@@ -34,35 +41,43 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <p><a href="MonCompteInfosGenerales.php">Informations générales</a></p>
-                        <p><a href="MonCompteInfosPersonelles.php">Informations personnelles</a></p> 
+                        <p><a href="MonCompteInfosPersonnelles.php">Informations personnelles</a></p> 
                     </ul>
                 </li>
                 <li role="presentation"><a href="MonCompteContacts.php">Contacts</a></li>
             </ul>
 	<!--Fin sous-menu -->
-		
+		<?php
+            if (isset($fail)) {
+                if ($fail == 1) {
+                    echo "<h3 id=ErrorMsg>Erreur dans les valeurs rentrées</h3>";
+                } else {
+                    echo "<h3 id=textToFade>Modifications enregistrées avec succès !</h3>";
+                }
+            }
+        ?>
 	<!--Info general -->
 		
 		<div class="info">
 	    <div class="container" style="width:50%;">
-        <form role="form" id="inscription" action="SignUp.php" method="post">
-            <h3><b><u>Informations Générales</u></b></h3>
+        <form role="form" id="inscription" action="" method="post">
+            <h3><b><u>Informations de connexion</u></b></h3>
 
             <div class="form-group">
 			  <div class="presentation_profil">
               <label for="email">Email:</label>
-              <input type="email" class="form-control" id='email' name="email" placeholder="Type your email" required>
+              <input type="email" class="form-control" id='email' name="email" <?php echo "value=\"$email\""; ?> required>
 			  </div>
             </div>
 
              <div class="form-group">
               <label for="confirmEmail">Confirmez votre Email:</label>
-              <input type="email" class="form-control" id='confirmEmail' name="confirmEmail" oninput="check2(this)" placeholder="Type your email again" required>
+              <input type="email" class="form-control" id='confirmEmail' name="confirmEmail" oninput="check2(this)" <?php echo "value=\"$email\""; ?> required>
             </div>
 
             <div class="form-group">
               <label for="ID">Identifiant:</label>
-              <input type="text" class="form-control" name="ID" placeholder="Type your ID" required>
+              <input type="text" class="form-control" name="ID" value="<?php echo $login; ?>" required>
             </div>
 
             <div class="form-group">
@@ -95,9 +110,10 @@
                    }
                 }
             </script>
+    
 			<div class="presentation_profil">
             
-            <button type="submit" class="btn btn-default" style="margin-bottom:2cm;">Enregistrez</button>
+            <button type="submit" name="submit" class="btn btn-default" style="margin-bottom:2cm;">Enregistrez</button>
             </div>
         </form>
     </div>
@@ -106,5 +122,12 @@
 	<!-- FIN Info general -->
 		
 <?php
+    if (isset($_POST['submit'])){
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+            $dbquery = pg_query($dbconnexion, "UPDATE Users SET email='$email' WHERE login='$login';"); // update database
+            $dbquery = pg_query($dbconnexion, "UPDATE Users SET password='$pass' WHERE login='$login';"); // update database
+            $_SESSION['password']=$pass; // update session var
+    }
     include 'overallfooter.php';
 ?>

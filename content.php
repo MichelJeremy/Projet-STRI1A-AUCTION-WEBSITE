@@ -65,7 +65,7 @@
                 }
                 echo "<div class=\"col-md-3 col-sm-6\">";
                 echo "<div class=\"thumbnail\">";
-                echo "<img src=\"$url\" alt=\"Aucune image\">";
+                echo "<img src=\"$url\" width=\"800\" height=\"500\" alt=\"Aucune image\">";
                 echo "<div class=\"caption\">";
                 echo "<h3>$nomObjet</h3>";
                 echo "<p>Prix actuel : $prixActuelPlusGrand</p>";   
@@ -164,3 +164,4 @@
             },1000);
         </script>
         
+            

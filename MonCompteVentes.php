@@ -39,46 +39,61 @@
                 <li role="presentation"><a href="MonCompteContacts.php">Contacts</a></li>
             </ul>
 	<!--Fin sous-menu -->
-	
-	<!--Début du tableau -->
-	<div class="container">
-	<div class="tableau">        
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Nom Objet</th>
-        <th>Prix</th>
-        <th>Date de mise en vente</th>
-		<th>Statut</th>
-		
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-		<td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-		<td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-		<td></td>
-      </tr>
-	  
-	  
-	  
-    </tbody>
-  </table>
-</div>
-</div>
+            <div class="container">
+                <div class="tableau">        
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Numéro</th>
+                        <th>Nom Objet</th>
+                        <th>Quantité</th>	
+                        <th>Prix initial</th>
+                        <th>Prix vendu</th>
+                        <th>Date de mise en vente</th>	
+                        <th>Date de fin</th>	
+                      </tr>
+                    </thead>
+                    <tbody>
+    <?php 
+        // we are going to get all the objets, then echo them along with some html tags to make the output somewhat visible.
+            
+        $dbconnexion = pg_connect("host=localhost port=5432 dbname=Projet_Web user=postgres password=postgres") or die('connection failed'.pg_last_error());
+        $login=$_SESSION['ID'];
+        $dbquery = pg_query($dbconnexion, "select objets.* from vendre, objets where login='$login' AND vendre.codeobjet = objets.codeobjet AND statut=0;");
+        $i=1;
+        while ($row = pg_fetch_assoc ($dbquery)) {
+            $name = $row['nomobjet'];
+            $qtt = $row['quantiteobjet'];
+            $prixinitial = $row['prixinitial'];
+            $dateMiseEnVente = $row['datedebutenchere'];
+            $dateFinEnchere = $row['datefinenchere'];
+            $codeObjet = $row['codeobjet'];
+            $dbquery2 = pg_query($dbconnexion, "select max(prixencherit), codeobjet from encherir where codeobjet=$codeObjet  group by codeobjet");
+            $result2 = pg_fetch_array($dbquery2);
+            if ($result2 != null) {
+                $prixvendu = $result2[0];
+            }
+            else {
+                $prixvendu = "Invendu";
+            }
+
+        echo "<tr>";
+        echo "<td>$i</td>";
+        echo "<td>$name</td>";
+        echo "<td>$qtt</td>";
+        echo "<td>$prixinitial</td>";
+        echo "<td>$prixvendu</td>";
+        echo "<td>$dateMiseEnVente</td>";
+        echo "<td>$dateFinEnchere</td>";
+        echo "</tr>";
+        $i++;
+        }
+    ?>	
+ 	  
+                </tbody>
+              </table>
+            </div>
+        </div>
 
 
 <!--Fin du tableau -->

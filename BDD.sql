@@ -6,6 +6,8 @@ prenom varchar(50),
 email varchar(100),
 telephone varchar(15),
 adresse varchar(300),
+civilite varchar(1),
+pays varchar(20),
 date_enregistrement date,
 crédits integer,
 birthDate date,
@@ -73,6 +75,8 @@ CONSTRAINT fk1_ench FOREIGN KEY (login) REFERENCES Users (login),
 CONSTRAINT fk2_ench FOREIGN KEY (codeObjet) REFERENCES Objets (codeObjet)
 );
 
-INSERT INTO Encherir(login, codeObjet, prixEncherit, dateEncherit) VALUES ('toto', '1', '600', CURRENT_TIMESTAMP)
+
+
+-- INSERT INTO Encherir(login, codeObjet, prixEncherit, dateEncherit) VALUES ('toto', '1', '600', CURRENT_TIMESTAMP)
 -- CONSTRAINT pk_ench PRIMARY KEY (login, codeObjet),
 -- ALTER TABLE Encherir DROP CONSTRAINT pk_ench

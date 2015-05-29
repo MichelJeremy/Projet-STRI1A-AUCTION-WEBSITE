@@ -1,6 +1,6 @@
 
 <div class="container" style="width:50%;">
-        <form role="form" id="vendreObjet" action="Vente.php" method="post">
+        <form role="form" id="vendreObjet" action="Vente.php" method="post" enctype="multipart/form-data">
             <h3><b><u>Mettez un de vos objets en vente !</u></b></h3>
             
             
@@ -14,8 +14,8 @@
             </div>
             
              <div class="form-group">
-                <label for="url">URL vers l'image de l'objet:</label>
-                <input type="url" class="form-control" name="urlObjet" placeholder="Entrez lURL vers l'image de l'objet" required>
+                <label for="file"></label>
+                 <input type="file" name="fileToUpload" id="fileToUpload"  required>
             </div>
 
 
@@ -64,7 +64,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-default" style="margin-bottom:2cm;">Submit</button>
+            <button type="submit" name='submit' class="btn btn-default" style="margin-bottom:2cm;">Submit</button>
             
         </form>
     </div>

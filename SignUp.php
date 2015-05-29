@@ -26,7 +26,7 @@
         include 'SignForm.php';
         require 'overallfooter.php';
     } else {       
-        $dbquery = pg_query($dbconnexion, "INSERT INTO users(login, password, nom, prenom, email, telephone, adresse, date_enregistrement, crédits, birthdate) VALUES ('$ID', '$password', '$nom', '$prenom', '$email', '$telephone', '$adresseComplete', '$date', '0', '$birthDate');");
+        $dbquery = pg_query($dbconnexion, "INSERT INTO users(login, password, nom, prenom, email, telephone, adresse, date_enregistrement, crédits, birthdate, civilite, pays) VALUES ('$ID', '$password', '$nom', '$prenom', '$email', '$telephone', '$adresseComplete', '$date', '0', '$birthDate', '$civilite', '$pays');");
         require 'overallHeader.html';
         include 'menuBar.php';
         include 'content.php';

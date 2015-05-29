@@ -35,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <p><a href="MonCompteInfosGenerales.php">Informations générales</a></p>
-                        <p><a href="MonCompteInfosPersonelles.php">Informations personnelles</a></p> 
+                        <p><a href="MonCompteInfosPersonnelles.php">Informations personnelles</a></p> 
                     </ul>
                 </li>
                 <li role="presentation" class="active"><a href="MonCompteVentes.php">Contacts</a></li>
