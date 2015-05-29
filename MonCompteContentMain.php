@@ -1,7 +1,8 @@
-        <div class="container">
+ <!-- main template of MonCompte -->
+    <div class="container">
             <div class="jumbotron">
                 <h1>Mon compte</h1> 
-                <p>BIENVENUE À VOTRE COMPTE. ICI VOUS POUVEZ GÉRER L'ENSEMBLE DE VOS INFORMATIONS PERSONNELLES ET DES ENCHÈRES.</p>
+                <p>BIENVENUE À VOTRE COMPTE. ICI VOUS POUVEZ GÉRER L'ENSEMBLE DE VOS INFORMATIONS PERSONNELLES ET DE VOS ENCHÈRES.</p>
             </div>   
     
         <!-- Fin du Jumbotron -->
@@ -21,7 +22,7 @@
                 $result = pg_fetch_array($dbquery);
                 $amountOfAuctionsActual = $result[0];
 
-                $dbquery = pg_query($dbconnexion, "((select max(prixencherit), codeobjet from encherir where login='toto' GROUP BY codeobjet) INTERSECT (select max(prixencherit), codeobjet from encherir GROUP BY codeobjet));");
+                $dbquery = pg_query($dbconnexion, "((select max(prixencherit), codeobjet from encherir where login='$login' GROUP BY codeobjet) INTERSECT (select max(prixencherit), codeobjet from encherir GROUP BY codeobjet));");
                 $amountOfAuctionsWon = pg_num_rows($dbquery);
 
                 $dbquery = pg_query($dbconnexion, "((select max(prixencherit), codeobjet from encherir where login='$login' group by codeobjet) EXCEPT (select max(prixencherit), codeobjet from encherir group by codeobjet));");
@@ -75,7 +76,7 @@
                 </p>
                 <p>
                     <span class="titre_sous_presentation">Objet(s) vendu(s) : </span>
-                    <a id="information" href="MonCompteVentes.php"><?php echo $amountOfAuctionsStarted; ?> objet(s) mis en vente</a>
+                    <a id="information" href="MonCompteVentes.php"><?php echo $amountOfAuctionsStarted; ?> objet(s) vendu(s)</a>
                 </p>
                 <p>
                     <span class="titre_sous_presentation">Enchère(s) remportée(s) : </span>

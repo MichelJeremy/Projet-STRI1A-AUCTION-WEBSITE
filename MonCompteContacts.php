@@ -1,3 +1,4 @@
+<!-- contacts tab of MonCompte -->
 <!DOCTYPE HTML>
 <?php
     include 'session.php';
@@ -5,15 +6,16 @@
     include 'menuBar2.php';
 ?>
 
-        <!-- Fin de la barre de navigation -->
-		<!--Début du Jumbotron -->
+        <!-- ending of navbar -->
+		<!--beginning of Jumbotron -->
         <div class="container">
             <div class="jumbotron">
                 <h1>Contact</h1> 
-                <p>BIENVENUE À LA RUBRIQUE CONTACT. ICI VOUS POUVEZ TROUVEZ NOS CONTACTS EN CAS DE PROBLEMES.</p>
+                <p>BIENVENUE À LA RUBRIQUE CONTACT. ICI VOUS POUVEZ TROUVER NOS CONTACTS EN CAS DE PROBLEME.</p>
                 <p></p>
             </div>
-        <!-- Fin du Jumbotron -->
+        <!-- end of Jumbotron -->
+            
 		<!--Début sous-menu -->
 				<ul class="nav nav-tabs">
                 <li role="presentation">

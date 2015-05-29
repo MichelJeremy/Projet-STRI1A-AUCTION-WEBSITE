@@ -1,3 +1,4 @@
+<!-- disconnection - destroys cookies and session -->
 <?php
     include 'session.php';
     session_destroy();

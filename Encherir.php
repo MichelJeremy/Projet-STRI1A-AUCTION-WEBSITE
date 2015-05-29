@@ -1,3 +1,4 @@
+<!-- file called when a user enters a price >0 in accueil.php -->
 <?php
     include 'session.php';
     $prix = $_POST['prix'];

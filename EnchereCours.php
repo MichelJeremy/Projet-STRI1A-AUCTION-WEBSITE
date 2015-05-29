@@ -1,3 +1,4 @@
+<!-- similar to accueil.php : displays auctions in the same fashion, but only the ones the user is selling -->
 <?php
     include 'session.php';
     include 'overallHeader.html';
@@ -19,6 +20,7 @@
         <!-- Fin du Jumbotron -->
 
 <?php
+    // print code dynamically
     while ($row = pg_fetch_assoc($dbquery)) {
         $i=1;
         $prixInitial = $row['prixinitial'];

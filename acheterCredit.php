@@ -1,3 +1,4 @@
+<!-- This file call different template files -->
 <?php
     include 'session.php';
     require 'overallHeader.html';

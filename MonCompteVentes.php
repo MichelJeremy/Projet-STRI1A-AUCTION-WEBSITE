@@ -1,3 +1,4 @@
+<!-- displays the totality of the sales of the connected user (MonCompte tab) -->
 <!DOCTYPE HTML>
 <?php
     include 'session.php';

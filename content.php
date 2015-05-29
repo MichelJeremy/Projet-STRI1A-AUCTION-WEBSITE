@@ -1,11 +1,12 @@
-        <!--Début du Jumbotron -->
+    <!-- Main template for accueil.php -->
+    <!--Début du Jumbotron -->
         <div class="container">
             <div class="jumbotron">
                 <h1>Welcome on x3m.com</h1> 
                 <p></p>
             </div>     
         <!-- Fin du Jumbotron -->
-
+        <!-- displays navbar -->
         <nav class="navbar navbar-default">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -42,7 +43,7 @@
             <h2>Liste des enchères en cours sur le site : </h2>    
         </div>    
             
-
+<!-- connects to database, get data on actual auctions and display them dynamically -->
         <?php
             $dbconnexion = pg_connect("host=localhost port=5432 dbname=Projet_Web user=postgres password=postgres") or die('connection failed'.pg_last_error());
             $dbquery = pg_query($dbconnexion, "SELECT * FROM objets where statut=1 AND (CURRENT_TIMESTAMP < dateFinEnchere);"); // should be <
@@ -85,6 +86,7 @@
                 }
 
             }
+        // Function that makes sure an auction is removed when timestamp is expired
         function checkTimestamps() {
             $now = date("Y-m-d H:i:s");
             $dbconnexion = pg_connect("host=localhost port=5432 dbname=Projet_Web user=postgres password=postgres") or die('connection failed'.pg_last_error());

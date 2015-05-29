@@ -1,3 +1,4 @@
+<!-- This file is called when a user wants to connect to the database -->
 <?php
 $ID = trim($_POST['login']);
 $password = trim($_POST['password']);

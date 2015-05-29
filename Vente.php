@@ -1,3 +1,4 @@
+<!-- file called by vendreObjet.php : uploads a file, get some POST data -->
 <?php
     require 'session.php';
     $nomObjet = $_POST['nomObjet'];
@@ -55,8 +56,10 @@
     if ($check == 1) {
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $url=$target_file2;
+        
         $dbquery = pg_query($dbconnexion, "INSERT INTO objets(codeObjet, nomObjet, quantiteObjet, categorie, url, description, prixInitial, prixAchatImmediat, dateDebutEnchere, dateFinEnchere, statut) VALUES ('$count', '$nomObjet', '$quantite', '$libelleCategorie', '$url', '$description', '$prixDebut', '$prixAchatImmediat', '$now', '$dateEnd', '1');");
-
+  
+        
         $dbquery = pg_query($dbconnexion, "INSERT INTO Vendre(login, codeObjet) VALUES ('$ID', '$count');");
         
 

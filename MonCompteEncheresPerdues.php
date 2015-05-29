@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<!-- displays the lost auctions (MonCompte tab) -->
 <?php
     include 'session.php';
     include 'overallHeader.html';

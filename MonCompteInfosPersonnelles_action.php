@@ -1,3 +1,4 @@
+<!-- form treatment file called by personal informations (MonCompte tab) -->
 <?php
     include 'session.php';
     include 'overallHeader.html';

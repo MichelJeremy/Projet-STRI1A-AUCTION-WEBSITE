@@ -1,4 +1,4 @@
-<!-- navigation bar - should only be used while connected, will throw a bunch of errors otherwise (php session var not set) -->
+<!-- navigation bar - should only be used while connected, will throw a bunch of errors otherwise (ie. php session var not set) -->
 
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">

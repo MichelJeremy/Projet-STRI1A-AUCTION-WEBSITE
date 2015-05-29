@@ -1,3 +1,4 @@
+-- Database file : create the database
 CREATE TABLE Users (
 login varchar(50),
 password varchar(50),

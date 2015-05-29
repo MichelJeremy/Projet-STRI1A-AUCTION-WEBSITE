@@ -1,4 +1,5 @@
-        <!-- Barre de navigation -->
+
+    <!-- navigation bar, used when user is disconnected -->
             
 
 

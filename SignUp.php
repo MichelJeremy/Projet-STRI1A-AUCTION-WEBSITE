@@ -1,3 +1,4 @@
+<!-- file called by SignForm.php - essentially add a user to a database  -->
 <?php
     $pays = $_POST['country'];
     $civilite = $_POST['sex'];

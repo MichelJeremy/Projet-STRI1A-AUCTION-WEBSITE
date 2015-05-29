@@ -1,3 +1,5 @@
+<!-- This file is called when a user wants to obtain credits on his account -->
+
 <?php
     include 'session.php';
     $ID = $_SESSION['ID'];

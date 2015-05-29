@@ -1,4 +1,4 @@
-
+<!-- main template for VendreObjet.php  -->
 <div class="container" style="width:50%;">
         <form role="form" id="vendreObjet" action="Vente.php" method="post" enctype="multipart/form-data">
             <h3><b><u>Mettez un de vos objets en vente !</u></b></h3>

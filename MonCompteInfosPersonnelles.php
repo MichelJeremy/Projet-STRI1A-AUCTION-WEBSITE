@@ -1,3 +1,4 @@
+<!-- Personal informations (MonCompte tab) -->
 <!DOCTYPE HTML>
 <?php
     include_once 'session.php';

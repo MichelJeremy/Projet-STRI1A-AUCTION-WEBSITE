@@ -1,4 +1,4 @@
-
+<!-- This file is the main template of acheterCredit -->
  <div class="container" style="width:50%;">
         <h2><b><u>Ajoutez des crédits à votre compte</u></b></h2>
             
